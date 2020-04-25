@@ -1,6 +1,8 @@
 require('./config/config');
 
 const express = require('express');
+const mongoose = require('mongoose');
+
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -9,41 +11,19 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false })); // pasea application/x-www-form-urlencoded
 app.use(bodyParser.json()); // Parsea application/json
 
-app.get('/', (req, res) => {
-    res.json('hola mundo');
-});
+app.use(require('./routes/usuario'));
 
-app.get('/usuario', (req, res) => {
-    res.json('get usuario');
-});
-
-app.post('/usuario', (req, res) => {
-    let body = req.body;
-
-    if(body.nombre === undefined){
-        res.status(400).json({
-            ok: false,
-            mensaje: 'El nombre es necesario'
-        });
+/*
+    node:11145) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+    Solución: { useUnifiedTopology: true, useNewUrlParser: true }
+*/
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, (err, res) => {
+    if(err){
+        throw err;
     }else {
-
+        console.log('Base de Datos ONLINE');
     }
-    res.json({
-        persona: body
-    });
 });
-
-app.put('/usuario/:id', (req, res) => {
-    let id = req.params.id;
-    res.json({
-        id: id
-    });
-});
-
-app.delete('/usuario', (req, res) => {
-    res.json('delete mundo');
-});
-
 
 app.listen(process.env.PORT, () => {
     console.log('escuchando puerto: ', process.env.PORT);
