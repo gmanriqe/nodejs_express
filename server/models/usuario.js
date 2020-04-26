@@ -24,8 +24,8 @@ let usuarioSchema = new Schema({
     },
     img: {
         type: String,
-        required: false
-    }, // No es obligatoria
+        required: false // No es obligatoria
+    }, 
     role: {
         type: String,
         default: 'USER_ROLE',
@@ -33,12 +33,12 @@ let usuarioSchema = new Schema({
     },
     estado: {
         type: Boolean,
-        default: true
-    }, // Boolean
+        default: true // tipo Booleano
+    },
     google: {
         type: Boolean,
-        default: false
-    } // Boolean
+        default: false // tipo Boolean
+    }
 });
 
 /*

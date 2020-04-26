@@ -11,7 +11,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false })); // pasea application/x-www-form-urlencoded
 app.use(bodyParser.json()); // Parsea application/json
 
-app.use(require('./routes/usuario'));
+// Configuración global de rutas
+app.use(require('./routes/index'));
 
 /*
     node:11145) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
