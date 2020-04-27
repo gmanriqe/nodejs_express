@@ -65,3 +65,27 @@ Configuración de IP. Todas aquellas que pueden conectarse a mi BD
 
 Para desinstalar un solo paquete, existe un comando
 $npm unstall nombrePaquete
+
+## Autenticación de Usuario (temas)
+
+Los Tokens a comparación de las Variables de Sesiones son registradas en el lado
+del cliente, mientras que las sesiones en el lado del servidor.
+
+Los tokens los puedes visualizar en el inspector de elementos, en la sección application y en la parte de Local Storage
+
+El jwt puede ser manipulado por alguien quien tenga conocimientos en JS, por eso se recomienda la verificación en el lado del servidor si es un token valido o invalido
+
+-Introducción a los tokens
+-JWT (ROJO: Header - tiene información del algoritmo y tipo del toquen (JWT)/ ROSADO: Payload - Contiene la información que nosotros queremos que este en el TOKEN / TURQUESA: Firma)
+-Login personalizado
+-Protección de rutas vía token
+-Leer payload del token sin la firma
+-Tips importantes para POSTMan
+-Despliegues en Heroku para pruebas en producción
+-Uso de Middleware
+
+## VARIABLES DE ENTORNO
+
+$heroku config (listar variables de configuración)
+$heroku config:set VARIABLE="valor-de-la-variable" (creación de una variable de entorno)
+

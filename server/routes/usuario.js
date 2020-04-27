@@ -19,7 +19,7 @@ app.get('/usuario', (req, res) => {
     limite = Number(limite);
 
     // Usuario.find({ }) ➡️ retorna todos los campos
-    Usuario.find({}, 'nombre email role estado google img') // ➡️ '' Aquí colocamos que campos deseamos mostrar
+    Usuario.find({ estado: true }, 'nombre email role estado google img') // ➡️ '' Aquí colocamos que campos deseamos mostrar
            .skip(desde)
            .limit(limite)
            .exec((err, usuarios) => {
@@ -30,7 +30,7 @@ app.get('/usuario', (req, res) => {
                     });
                 }
 
-                Usuario.count({}, (err, conteoRegistros) => {
+                Usuario.count({ estado: true }, (err, conteoRegistros) => {
                     res.json({
                         ok: true,
                         usuarios: usuarios,
@@ -41,7 +41,7 @@ app.get('/usuario', (req, res) => {
 });
 
 /**
- * Registrar usuario
+ * Registrar un usuario
  */
 app.post('/usuario', (req, res) => {
     // req.body ➡️ obtiene todo los valores enviados por el cuerpo
@@ -69,7 +69,7 @@ app.post('/usuario', (req, res) => {
 });
 
 /**
- * Editar usuario
+ * Editar un usuario
  * ⚠️ 
  */
 app.put('/usuario/:id', (req, res) => {
@@ -91,7 +91,7 @@ app.put('/usuario/:id', (req, res) => {
 });
 
 /**
- * Eliminar usuario
+ * Eliminar un usuario (Físico)
  * Soluciones: 
  * 1️⃣ Podriamos enviar el id por POST y obtenerlo por el body
  * 2️⃣ Podriamos enviarlo por la url y obtenerlo el parametro
@@ -107,7 +107,7 @@ app.delete('/usuario/:id', (req, res) => {
             });
         }
 
-        if (!usuarioEliminado { // ➡️ Equivale a (usuarioEliminado === null) 
+        if (!usuarioEliminado) { // ➡️ Equivale a (usuarioEliminado === null) 
             res.status(400).json({
                 ok: false,
                 err: {
@@ -123,5 +123,37 @@ app.delete('/usuario/:id', (req, res) => {
     });
 });
 
+/**
+ * Eliminar un usuario (Lógico)
+ */
+app.put('/usuarioActualizar/:id', (req, res) => {
+    let id = req.params.id;
+    let cambioEstado = {
+        estado: false
+    }
+
+    Usuario.findByIdAndUpdate(id, cambioEstado,  { new: true }, (err, usuarioEliminado) => {
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                err: err
+            });
+        }
+
+        if (!usuarioEliminado) { // ➡️ Equivale a (usuarioEliminado === null) 
+            res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'usuario no encontrado'
+                }
+            });
+        }
+
+        res.json({
+            ok: true,
+            usuario: usuarioEliminado
+        });
+    });
+})
 
 module.exports = app;

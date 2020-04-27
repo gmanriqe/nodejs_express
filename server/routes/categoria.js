@@ -5,7 +5,7 @@ const Categoria = require('../models/categoria.js');
 const app = express();
 
 /**
- * Mostrar todas las categorías
+ * Listar categorías
  */
 app.get('/categoria', (req, res) => {
     Categoria.find({})
@@ -24,7 +24,7 @@ app.get('/categoria', (req, res) => {
 });
 
 /**
- * Crear nueva categoría
+ * Crear una categoría
  */
 app.post('/categoria', (req, res) => {
     
@@ -73,7 +73,7 @@ app.put('/categoria/:id', (req, res) => {
 });
 
 /**
- * Eliminar un categoría
+ * Eliminar una categoría
  */
 app.delete ('/categoria/:id', (req, res) => {
     // Solo un administrador puede eliminar una categoría

@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); 
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false })); // pasea application/x-www-form-urlencoded
-app.use(bodyParser.json()); // Parsea application/json
+// Middleware ➡️ pasea application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Parsea application/json
+app.use(bodyParser.json());
 
 // Configuración global de rutas
 app.use(require('./routes/index'));

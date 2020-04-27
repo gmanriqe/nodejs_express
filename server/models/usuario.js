@@ -42,8 +42,8 @@ let usuarioSchema = new Schema({
 });
 
 /*
-    ⚠️ Para no retornar la contraseña en la respuesta del toJSON ➡️ este método 
-    siempre se llamará cuando se intenta imprimir mediante JSON 
+    ⚠️ Para NO RETORNAR la contraseña en la respuesta de cualquier petición que solicite este modelo
+    ➡️ este método siempre se llamará cuando se intenta imprimir mediante JSON
 */
 usuarioSchema.methods.toJSON = function() {
     console.log(this);
