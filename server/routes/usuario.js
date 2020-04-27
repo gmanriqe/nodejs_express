@@ -4,13 +4,14 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const Usuario = require('../models/usuario.js');
+const { verificaToken, verificaAdminRol } = require('../middlewares/autenticacion');
 
 const app = express(); 
 
 /**
  * Listar usuarios
  */
-app.get('/usuario', (req, res) => {
+app.get('/usuario', verificaToken, (req, res) => {
     // req.query ➡️ parametros opcionales (puede venir o no)
     let desde = req.query.desde || 0;
     desde = Number(desde);
@@ -43,7 +44,7 @@ app.get('/usuario', (req, res) => {
 /**
  * Registrar un usuario
  */
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [verificaToken, verificaAdminRol], (req, res) => {
     // req.body ➡️ obtiene todo los valores enviados por el cuerpo
     let usuario = new Usuario({
         nombre: req.body.nombre,
@@ -72,7 +73,7 @@ app.post('/usuario', (req, res) => {
  * Editar un usuario
  * ⚠️ 
  */
-app.put('/usuario/:id', (req, res) => {
+app.put('/usuario/:id', [verificaToken, verificaAdminRol], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body,['nombre','email','img','role','estado']); // Método de Underscore ➡️pick
 
@@ -96,7 +97,7 @@ app.put('/usuario/:id', (req, res) => {
  * 1️⃣ Podriamos enviar el id por POST y obtenerlo por el body
  * 2️⃣ Podriamos enviarlo por la url y obtenerlo el parametro
  */
-app.delete('/usuario/:id', (req, res) => {
+app.delete('/usuario/:id', [verificaToken, verificaAdminRol], (req, res) => {
     let id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioEliminado) => {

@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
         // JWT ➡️ ROSADO: Payload - Contiene la información que nosotros queremos que este en el TOKEN
         let token = jwt.sign({ 
             usuario: usuarioDB
-        }, 'gmanriqe-frontend-developer', { expiresIn: process.env.CADUCIDAD_TOKEN }); // 60 segundo, 60 minutos, 24 horas y 30 días
+        }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN }); // 60 segundo, 60 minutos, 24 horas y 30 días
 
         res.json({
             ok: true,
