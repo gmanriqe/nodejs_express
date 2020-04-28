@@ -77,7 +77,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdminRol], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body,['nombre','email','img','role','estado']); // Método de Underscore ➡️pick
 
-    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true },(err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
         if (err) {
             res.status(400).json({
                 ok: false,
@@ -141,7 +141,7 @@ app.put('/usuarioActualizar/:id', (req, res) => {
             });
         }
 
-        if (!usuarioEliminado) { // ➡️ Equivale a (usuarioEliminado === null) 
+        if (!usuarioEliminado) { // ➡️ Equivale a (usuarioEliminado === null). Si no existe
             res.status(400).json({
                 ok: false,
                 err: {
@@ -155,6 +155,6 @@ app.put('/usuarioActualizar/:id', (req, res) => {
             usuario: usuarioEliminado
         });
     });
-})
+});
 
 module.exports = app;

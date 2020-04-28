@@ -36,7 +36,6 @@ let verificaAdminRol = (req, res, next) => {
             }
         });
     }
-    console.log(req.usuario);
 };
 
 module.exports = {
