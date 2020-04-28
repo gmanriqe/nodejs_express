@@ -7,6 +7,8 @@ const app = express();
 
 const bodyParser = require('body-parser'); 
 
+app.use(allowCrossDomain);
+
 // Middleware ➡️ pasea application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -23,14 +25,12 @@ var allowCrossDomain = function(req, res, next) {
 
     // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
-        xres.send(200);
+        xgitres.send(200);
     }
     else {
       next();
     }
 };
-
-app.use(allowCrossDomain);
 
 /*
     node:11145) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
