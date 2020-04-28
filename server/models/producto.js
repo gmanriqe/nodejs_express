@@ -19,7 +19,7 @@ var productoSchema = new Schema({
     },
     descripcion: { 
         type: String, 
-        required: false 
+        required: false
     },
     disponible: { 
         type: Boolean, 
@@ -29,7 +29,7 @@ var productoSchema = new Schema({
     categoria: { 
         type: Schema.Types.ObjectId, 
         ref: 'Categoria', 
-        required: true 
+        required: true
     },
     usuario: { 
         type: Schema.Types.ObjectId, 
