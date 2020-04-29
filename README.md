@@ -98,4 +98,6 @@ crear un usuario, editar un usuario, eliminar un usuario
 
 ## API REST
 
-- 
+- https://fathomless-sea-38802.herokuapp.com/
+- GET: /categoria
+- POST: /categoria
