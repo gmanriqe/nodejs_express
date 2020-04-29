@@ -31,6 +31,7 @@ app.get('/categoria', verificaToken, (req, res) => {
              });
 });
 
+
 /**
  * Crear una categoría
  * ⚠️ Debe regresar la nueva categoría creada
