@@ -17,6 +17,13 @@ var productoSchema = new Schema({
             'El precio únitario es necesario'
         ] 
     },
+    cantidad: {
+        type: Number,
+        required: [
+            true, 
+            'La cantidad es necesario'
+        ] 
+    },
     descripcion: { 
         type: String, 
         required: false
@@ -31,10 +38,10 @@ var productoSchema = new Schema({
         ref: 'Categoria', 
         required: true
     },
-    usuario: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'Usuario' 
-    }
+    // usuario: { 
+    //     type: Schema.Types.ObjectId, 
+    //     ref: 'Usuario' 
+    // }
 });
 
 
