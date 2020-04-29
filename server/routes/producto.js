@@ -47,10 +47,11 @@ app.post('/productos', verificaToken, (req, res) => {
     let producto = new Producto({
         nombre: req.body.nombre,
         precioUni: req.body.precioUni,
+        cantidad: req.body.cantidad,
         descripcion: req.body.descripcion,
         disponible: req.body.disponible,
         categoria: req.body.categoria,
-        usuario: req.usuario._id,
+        // usuario: req.usuario._id,
     });
 
     // console.log(producto);
