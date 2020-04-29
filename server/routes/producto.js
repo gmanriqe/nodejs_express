@@ -15,7 +15,7 @@ app.get('/productos', (req, res) => {
     Producto.find({})
              .populate('categoria')
             //  .populate('usuario')
-             .exec((err, categorias) => {
+             .exec((err, productos) => {
                 if(err){
                     res.status(400).json({
                         ok: false,
@@ -24,7 +24,7 @@ app.get('/productos', (req, res) => {
                 }
                 res.status(200).json({
                     ok: true,
-                    categorias: categorias
+                    productos: productos
                 });
              });
 });
