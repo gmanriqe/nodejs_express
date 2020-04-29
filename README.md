@@ -96,3 +96,6 @@ crear un usuario, editar un usuario, eliminar un usuario
 - $heroku config (listar variables de configuración)
 - $heroku config:set VARIABLE="valor-de-la-variable" (creación de una variable de entorno)
 
+## API REST
+
+- 
