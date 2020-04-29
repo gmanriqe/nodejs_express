@@ -20,9 +20,13 @@ app.get('/categoria', verificaToken, (req, res) => {
                         err: err
                     });
                 }
-                res.json({
-                    ok: true,
-                    categorias: categorias
+
+                Categoria.count( { estado: true }, (err, conteoCategoria) => {
+                    res.json({
+                        ok: true,
+                        categorias: categorias,
+                        cuanto: conteoCategoria
+                    });
                 });
              });
 });
