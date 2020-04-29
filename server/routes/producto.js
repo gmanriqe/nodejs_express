@@ -14,7 +14,7 @@ app.get('/productos', (req, res) => {
     // - paginado
     Producto.find({})
              .populate('categoria')
-             .populate('usuario')
+            //  .populate('usuario')
              .exec((err, categorias) => {
                 if(err){
                     res.status(400).json({
