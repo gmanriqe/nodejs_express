@@ -43,14 +43,16 @@ app.get('/productos/:id', (req, res) => {
  */
 app.post('/productos', verificaToken, (req, res) => {
     // - grabar el producto
+    // - grabar la marca
     // - grabar la categoría
     let producto = new Producto({
         nombre: req.body.nombre,
         precioUni: req.body.precioUni,
         cantidad: req.body.cantidad,
         descripcion: req.body.descripcion,
-        disponible: req.body.disponible,
+        estado: req.body.estado,
         categoria: req.body.categoria,
+        marca: req.body.marca,
         // usuario: req.usuario._id,
     });
 
