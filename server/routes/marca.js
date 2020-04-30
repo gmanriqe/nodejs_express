@@ -17,9 +17,12 @@ app.get('/marca', (req, res) => {
                     err: err
                 });
             }
-            res.status(200).json({
-                ok: true,
-                marcas: marcas
+            Marca.count( { estado: true }, (err, conteoMarca) => {
+                res.status(200).json({
+                    ok: true,
+                    marcas: marcas,
+                    cuanto: conteoMarca
+                });
             });
         });
 });
