@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Marca = require('../models/marca.js');
+const { verificaToken } = require('../middlewares/autenticacion');
 
 const app = express();
 
