@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var marcSchema = new Schema({
+var marcaSchema = new Schema({
     nombre: {
         type: String,
         required: [
@@ -19,3 +19,5 @@ var marcSchema = new Schema({
         default: Date.now
     }
 });
+
+module.exports = mongoose.model('Marca', marcaSchema);
