@@ -26,7 +26,7 @@ app.get('/marca', (req, res) => {
 /**
  * Crear una marca
  */
-app.post('/productos', verificaToken, (req, res) => {
+app.post('/marca', verificaToken, (req, res) => {
     let marca = new Marca({
         nombre: req.body.nombre
     });
