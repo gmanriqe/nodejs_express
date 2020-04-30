@@ -12,8 +12,8 @@ let categoriaSchema = new Schema({
         default: true,
     },
     fecha_registro: {
-        type: Timestamp,
-        default: true
+        type: Date,
+        default: Date.now
     }
     // usuario: { 
     //     type: Schema.Types.ObjectId, 

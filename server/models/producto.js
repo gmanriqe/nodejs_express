@@ -28,7 +28,7 @@ var productoSchema = new Schema({
         type: String, 
         required: false
     },
-    disponible: { 
+    estado: { 
         type: Boolean, 
         required: true, 
         default: true 
@@ -38,6 +38,11 @@ var productoSchema = new Schema({
         ref: 'Categoria', 
         required: true
     },
+    marca: {
+        type: Schema.Types.ObjectId,
+        ref: 'Marca',
+        required: true
+    }
     // usuario: { 
     //     type: Schema.Types.ObjectId, 
     //     ref: 'Usuario' 
