@@ -11,10 +11,14 @@ let categoriaSchema = new Schema({
         type: Boolean, 
         default: true,
     },
-    usuario: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'Usuario' 
+    fecha_registro: {
+        type: Timestamp,
+        default: true
     }
+    // usuario: { 
+    //     type: Schema.Types.ObjectId, 
+    //     ref: 'Usuario' 
+    // }
 });
 
 
